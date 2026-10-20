@@ -1,0 +1,10 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import {fileURLToPath} from 'node:url';
+const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
+process.chdir(root);
+fs.rmSync('dist',{recursive:true,force:true});
+fs.mkdirSync('dist');
+for(const file of fs.readdirSync('.')) if(file.endsWith('.html') || ['robots.txt','sitemap.xml','.nojekyll','CNAME'].includes(file)) fs.copyFileSync(file,path.join('dist',file));
+fs.cpSync('assets','dist/assets',{recursive:true});
+console.log('Static deployment files written to dist/.');

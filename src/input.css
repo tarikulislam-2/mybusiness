@@ -1,0 +1,10 @@
+@import "tailwindcss";
+@source "../*.html";
+@source "./pages.mjs";
+@source "../assets/js/*.js";
+@theme {
+  --color-forest: #173d32;
+  --color-ivory: #f7f8f2;
+  --color-lime: #d6f488;
+  --font-sans: 'Manrope', Arial, sans-serif;
+}
